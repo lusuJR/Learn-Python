@@ -56,4 +56,59 @@ def get_all_employees():
     connection.close()
 
     return employees
-  
+#Search by ID
+def get_employee_by_id(employee_id):
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    sql = """
+        SELECT EmployeeID,
+               FullName,
+               Department,
+               Salary
+        FROM Employees
+        WHERE EmployeeID = ?
+    """
+
+    cursor.execute(sql, employee_id)
+
+    employee = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    return employee
+
+
+#Update Employee
+
+def update_employee(employee_id, name, department, salary):
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    sql = """
+        UPDATE Employees
+        SET FullName = ?,
+            Department = ?,
+            Salary = ?
+        WHERE EmployeeID = ?
+    """
+
+    cursor.execute(
+        sql,
+        name,
+        department,
+        salary,
+        employee_id
+    )
+
+    connection.commit()
+
+    rows_affected = cursor.rowcount
+
+    cursor.close()
+    connection.close()
+
+    return rows_affected

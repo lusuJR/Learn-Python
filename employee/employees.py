@@ -112,3 +112,29 @@ def update_employee(employee_id, name, department, salary):
     connection.close()
 
     return rows_affected
+
+
+#Delete employee
+def delete_employee(employee_id):
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    sql = """
+        DELETE FROM Employees
+        WHERE EmployeeID = ?
+    """
+
+    cursor.execute(
+        sql,
+        employee_id
+    )
+
+    connection.commit()
+
+    rows_deleted = cursor.rowcount
+
+    cursor.close()
+    connection.close()
+
+    return rows_deleted

@@ -1,17 +1,17 @@
-from employee.employees import add_employee
+from employee.employees import get_all_employees
 
 
 print("====================================")
-print("     EMPLOYEE MANAGEMENT SYSTEM")
+print("     EMPLOYEE LIST")
 print("====================================")
 
-name = input("Enter employee full name: ")
-department = input("Enter department: ")
-salary = float(input("Enter salary: R"))
+employees = get_all_employees()
 
+for employee in employees:
 
-add_employee(
-    name,
-    department,
-    salary
-)
+    print(f"Employee ID : {employee[0]}")
+    print(f"Name : {employee[1]}")
+    print(f"Department : {employee[2]}")
+    print(f"Salary : R {employee[3]}")
+
+    print("----------------------------")

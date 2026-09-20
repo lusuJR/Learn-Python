@@ -32,3 +32,28 @@ def add_employee(name, department, salary):
     connection.close()
 
     print("Employee added successfully!")
+
+#Get all employees
+
+def get_all_employees():
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    sql = """
+        SELECT EmployeeID,
+               FullName,
+               Department,
+               Salary
+        FROM Employees
+    """
+
+    cursor.execute(sql)
+
+    employees = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return employees
+  

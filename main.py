@@ -1,13 +1,17 @@
-from Database.connection import get_connection
+from employee.employees import add_employee
 
 
-try:
-    connection = get_connection()
+print("====================================")
+print("     EMPLOYEE MANAGEMENT SYSTEM")
+print("====================================")
 
-    print("Connected to SQL Server successfully!")
+name = input("Enter employee full name: ")
+department = input("Enter department: ")
+salary = float(input("Enter salary: R"))
 
-    connection.close()
 
-except Exception as error:
-    print("Database connection failed!")
-    print(error)
+add_employee(
+    name,
+    department,
+    salary
+)

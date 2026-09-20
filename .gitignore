@@ -1,0 +1,19 @@
+# Visual Studio temporary files
+.vs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment / secrets
+.env
+
+# Database files
+*.mdf
+*.ldf
+
+# OS files
+.DS_Store
+Thumbs.db
